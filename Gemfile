@@ -7,8 +7,9 @@ ruby '2.6.5'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'bcrypt',         '3.1.12'
 gem 'bootstrap-sass', '3.3.7'
+gem 'jquery-rails', '4.3.1'
 # Use sqlite3 as the database for Active Record
-
+gem 'rails-controller-testing'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
