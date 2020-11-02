@@ -37,9 +37,13 @@ textarea {
 input[type="text"],
 input[type="password"],
 input[type="button"],
+input[type="submit"],
 textarea,
 select {
     outline: 0 !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 input[type="text"],
@@ -161,10 +165,11 @@ ul{
     display: inline-block;
     margin-top: 10px;
     margin-right: 15px;
-    padding:10px 10px 10px;
+    padding:5px 10px;
     background: #FFFFFF;
     border-radius: 5px;
      color:#FD365B!important;
+     vertical-align: middle;
   }
   a:hover{
     background: #FFFFFF!important;
@@ -223,7 +228,7 @@ ul{
    padding-left: 20px;
   }
   span{
-font-size: .95em;
+font-size: .85em;
   }
 }
 
@@ -251,12 +256,7 @@ padding:0px;
 display: flex;
 font-size: 1.0em;
 }
-span{
 
-}
-a{
-
-}
 }
 
 /* footer */
@@ -356,7 +356,7 @@ li a {
 
 
 #img_prev {
-  width:40%;
+  width:100%;
 }
 
 #img_no_image {
