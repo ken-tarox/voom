@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
        redirect_back_or user
      else
-       message  = "アカウントはアクティベーションされていません "
-       message += "アクティベーションリンクの用にメールを確認してください."
+       message  = "アカウントは有効化されていません "
+       message += "有効化リンクの用のメールを確認してください."
        flash[:warning] = message
        redirect_to root_url
      end
