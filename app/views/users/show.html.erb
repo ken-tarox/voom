@@ -1,20 +1,49 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
-  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <section class="user_info user-prof">
+      <div class="user-detail">
+        <div class="prof-img">
+          <% if @user.picture.present? %>
+          <%= image_tag @user.picture.thumb200.url%>
+          <% else %>
+          <%= image_tag "avatar200.jpg" %>
+          <% end %>
+        </div>
+        <div class="user-detail-inner">
+          <h3><%= @user.name %></h3>
+          <span>登録日<%= l @user.created_at, format: :short %></span>
+        </div>
+      </div>
+      <div class="user-content">
+        <h3>自己紹介</h3>
+        <p><%= @user.content %></p>
+      </div>
+  </section>
 </div>
+
+<div class="col-md-12 prof-cards">
+  <% if @user.onsenposts.any? %>
+    <h3>My温泉<%= @user.onsenposts.count %>件</h3>
+    <div class="onsen-list">
+      <% @onsenposts.first(6).each do |onsenpost| %>
+        <%= render onsenpost %>
+      <% end %>
+      </div>
+      <% if @user.onsenposts.count > 4 %>
+      <div class="prof-fav-btn-wp"><%= link_to "全てのMy温泉", user_my_onsenposts_path(@user),  class: "prof-fav-btn" %>
+      </div>
+      <% end %>
+  <% end %>
+</div>
+<div class="col-md-12 prof-cards">
+  <% if @user.bookmarks.any? %>
+   <h3>お気に入り温泉<%= @user.bookmarks.count %>件 </h3>
+   <div class="onsen-list">
+     <%= render 'shared/bookmark_list' %>
+   </div>
+     <% end %>
+     <% if @user.bookmarks.count > 6 %>
+     <div class="prof-fav-btn-wp"><%= link_to "全てのお気に入り温泉", user_bookmarked_onsenposts_path(@user),  class: "prof-fav-btn" %>
+     </div>
+     <% end %>
+  </div>

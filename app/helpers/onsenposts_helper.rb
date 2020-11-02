@@ -1,0 +1,2 @@
+module OnsenpostsHelper
+end

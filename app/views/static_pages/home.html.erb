@@ -1,33 +1,120 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
+    <div class="col-md-7">
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
-      <section class="micropost_form">
-        <%= render 'shared/micropost_form' %>
+      <section class="onsenpost_form">
+        <%= render 'shared/onsenpost_form' %>
       </section>
+    </div>
+    <aside class="col-md-5">
+      <div class="side-one">
+          <h3>新着の温泉</h3>
+          <%= render 'shared/feed' %>
+      </div>
     </aside>
-    <div class="col-md-8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
+<% else %>
+<div class="fluid-box  top-bg-img">
+  <div class="container fluid-box-inner">
+    <h2>温泉は私たちの宝</h2>
+    <p>
+      いつも心休まる私のお気に入りの温泉。<br>
+      またいつか行きたいあの街の温泉。<br>
+      そんなあなたの温泉情報をみんなとシェアしてみませんか？
+    </p>
+    <%= link_to "温泉を探す", onsenposts_path, class: "btn btn-lg btn-top" %>
+  </div>
+</div>
+<div class="row home-main-one">
+  <h1>ONSENO?</h1>
+  <p>ONSENOは温泉情報をシェア参加型のクチコミサイトです。検索機能で寄せられた全国の温泉の検索が可能です。クチコミやMY温泉を登録するでオススメの温泉情報をみんなと共有することができます。</p>
+</div>
+<div class="home-main-two">
+  <div class="container-fluid main-two-inner">
+    <div class="container main-two-inner-list">
+      <ul class="">
+        <li>
+          <span class="main-list-title">My温泉を登録</span>
+          <div class="main-list-img">
+          <%= embedded_svg("pushpin.svg", class: "list-svg") %></div>
+          <span class="main-list-text">My温泉を登録して<br>温泉情報をみんなとシェア</span>
+        </li>
+        <li>
+          <span class="main-list-title">クチコミ情報</span>
+          <div class="main-list-img"><%= embedded_svg("bubbles3.svg", class: "list-svg") %></div>
+          <span class="main-list-text">気になる温泉のリアルなクチコミでチェック</span>
+        </li>
+        <li>
+          <span class="main-list-title">お気に入り温泉</span>
+          <div class="main-list-img"><%= embedded_svg("heart.svg", class: "list-svg") %></div>
+          <span class="main-list-text">お気に入りの温泉を登録していつでもクチコミなどを確認</span>
+        </li>
+      </ul>
+    </div>
+    <div class="main-list-btn">
+    <%= link_to "ユーザー登録", signup_path,  class: "btn btn-lg btn-top" %>
     </div>
   </div>
-<% else %>
-
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
-
-  <h2>
-    This is the home page for the
-    <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path,  class: "btn btn-lg btn-primary" %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-            'http://rubyonrails.org/' %>
+<div class="row home-main-three">
+  <h3>新着の温泉</h3>
+  <div class="onsen-list-h">
+<div class="a">
+    <% @onsenposts.first(3).each do |onsenpost| %>
 
+      <div class="col-sm-4">
+        <div class="card-h h-100">
+          <%= link_to onsenpost do %>
+          <% if onsenpost.picture.present? %>
+          <%= image_tag onsenpost.picture.thumb400.url, class:"card-img-h" %>
+          <% else %>
+          <%= image_tag "onsen-logo400.jpg", class:"card-img-h"  %>
+          <% end %>
+          <div class="card-content-h">
+            <span class="onsen_name-h"><%= onsenpost.onsen_name %></span>
+            <span class="prefecture-h"><%= onsenpost.prefecture %></span>
+          <div class="card-content-bt-h">
+            <span class="comment-h"><%= embedded_svg("bubbles3.svg", class: "bubble-svg-h") %><%= onsenpost.comments.count %> 件のクチコミ</span>
+            <span class="avg-rating-h"><%= embedded_svg("star-full.svg", class: "star-svg-h") %><%= onsenpost.rating_average %> </span>
+          </div>
+          <% end %>
+          </div>
+    </div>
+  </div>
+    <% end %>
+</div>
+</div>
+  <div class="home-btm-btn">
+  <%= link_to "全ての温泉をみる", onsenposts_path,  class: "btn btn-lg btn-top" %>
+  </div>
+</div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(function(){
+      function sliderSetting(){
+
+          var width = $(window).width();
+
+          if(width <= 767){
+              $('.a').not('.slick-initialized').slick({
+                  autoplay: false,
+                  dots: true,
+                  arrows: true,
+                  prevArrow:'<div class="arrow prev"><i class="fas fa-angle-left"></i></div>',
+                  nextArrow:'<div class="arrow next"><i class="fas fa-angle-right"></i></div>',
+              });
+          } else {
+              $('.a.slick-initialized').slick('unslick');
+          }
+      }
+
+      sliderSetting();
+
+      $(window).resize( function() {
+          sliderSetting();
+      });
+  });
+</script>

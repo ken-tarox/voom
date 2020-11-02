@@ -1,0 +1,12 @@
+<% if current_user.admin? %>
+<div class="to-prof-page">
+  <p>プロフィール写真や自己紹介を更新してみましょう！</p>
+  <%= link_to "プロフィールを更新する", edit_user_path(current_user) ,  class: "btn-submit-bl-sub-prof" %>
+</div>
+
+<% else %>
+<div class="user-content">
+  <h3>自己紹介</h3>
+  <p><%= @user.content %></p>
+</div>
+<% end %>

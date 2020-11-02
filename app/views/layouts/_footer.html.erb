@@ -1,13 +1,25 @@
 <footer class="footer">
-  <small>
-    The <a href="https://railstutorial.jp/">Ruby on Rails Tutorial</a>
-    by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
+<div class="container container-footer">
+<div class="footer-bg">
+    <ul class="footer-box">
+      <li><span>ご利用について</span></li>
+      <li class="footer-list"><%= link_to "ONSENOとは？" %></li>
+      <li class="footer-list"><%= link_to "よくある質問" %></li>
     </ul>
-  </nav>
+
+    <ul class="footer-box">
+      <li><span>サイト情報</span></li>
+      <li class="footer-list"><%= link_to "運営会社" %></li>
+      <li class="footer-list"><%= link_to "プライバシーポリシー" %></li>
+    </ul>
+
+    <ul class="footer-box">
+      <li><span>お問い合わせ</span></li>
+      <li class="footer-list"><%= link_to "お問い合わせ先" %></li>
+    </ul>
+    </div>
+    <div class="footer-logo">
+  <%= link_to "ONSENO", root_url, id: "logo" %>
+   </div>
+</div>
 </footer>

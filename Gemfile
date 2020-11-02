@@ -4,14 +4,20 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
+gem 'rails', '6.0.3.3'
 gem 'bcrypt',         '3.1.12'
 gem 'faker',          '1.7.3'
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave', '~> 2.0'
 gem 'mini_magick',             '4.7.0'
 gem 'will_paginate', '3.1.7'
+gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass', '3.3.7'
 gem 'jquery-rails', '4.3.1'
+gem 'uglifier'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'jquery-turbolinks'
+gem "dotenv-rails"
 # Use sqlite3 as the database for Active Record
 gem 'rails-controller-testing'
 # Use Puma as the app server
@@ -31,7 +37,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'pry-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -65,6 +71,7 @@ group :production do
   gem 'pg', '0.20.0'
   gem 'fog', '1.42'
 end
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

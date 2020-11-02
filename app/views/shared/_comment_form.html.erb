@@ -1,0 +1,74 @@
+<div class="comment-wrapper border-top mb-10">
+  <h3 class="mt-5">レビュー</h3>
+  <% @comments.each do |comment| %>
+  <div class="prof-img-wrapper">
+    <div class="prof-img">
+      <% if comment.user.picture.present? %>
+
+      <%= image_tag comment.user.picture.thumb100.url %>
+      <%= link_to (image_tag "#{comment.user.picture.thumb100.url}"), comment.user %>
+      <% else %>
+      <%= link_to (image_tag "avatar100.jpg"), comment.user %>
+      <% end %>
+    </div>
+    <div class="user-detail">
+      <div class="user-detail-inner">
+      <h3><%= link_to comment.user.name, comment.user %></h3>
+      <span><%= l comment.created_at, format: :short %></span>
+      </div>
+    </div>
+  </div>
+  <div class="comment-rating-wrapper">
+    <div class="comment-del-btn">
+     <% if current_user?(comment.user) %>
+       <%= link_to "クチコミを削除", comment, method: :delete, data: { confirm: "クチコミを削除してもよろしいですか？" } %>
+     <% end %>
+    </div>
+
+    <% if comment.rate.present?%>
+  <div id="star-rate-<%= comment.id %>"></div>
+  <span class="comment-rating"><%= comment.rate %></span>
+  <script>
+        $('#star-rate-<%= comment.id %>').raty({
+          size: 45,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: '<%= comment.rate %>',
+      });
+  </script>
+  <% end %>
+  </div>
+  <p class="comment-content"><%= comment.comment_content%></p>
+  <% end %>
+<%= will_paginate(@comments) %>
+
+  <% if logged_in? %>
+  <%= form_with(model:[@onsenpost, @comment], method: :post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+      <%= f.text_area :comment_content, class: "form-control", rows: 5 %>
+      <%= f.hidden_field :onsenpost_id, value: @onsenpost.id %>
+      <div class="field-star">
+      <span class="eval">評価</span>
+      <span class="">クチコミのみ投稿する場合は評価の必要はありません</span>
+      <div class="field" id="star">
+        <%= f.hidden_field :rate %>
+      </div>
+      </div>
+
+      <script>
+          $('#star').raty({
+              size     : 37,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              scoreName: 'comment[rate]',
+          });
+      </script>
+      <%= f.submit '投稿する' , class: "btn-submit" do %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

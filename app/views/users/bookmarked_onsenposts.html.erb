@@ -1,0 +1,31 @@
+<% provide(:title, 'お気に入りの温泉リスト') %>
+  <div class="col-md-8 col-md-offset-2">
+    <section class="user_info user-prof">
+      <div class="user-detail">
+        <div class="prof-img">
+          <% if @user.picture.present? %>
+          <%= image_tag @user.picture.thumb200.url%>
+          <% else %>
+          <%= image_tag "avatar200.jpg" %>
+          <% end %>
+        </div>
+        <div class="user-detail-inner">
+          <h3><%= @user.name %></h3>
+          <span>登録日<%= l @user.created_at, format: :short %></span>
+        </div>
+      </div>
+      <div class="user-content">
+      </div>
+  </section>
+</div>
+
+<div class="col-md-12 prof-cards">
+  <% if @user.bookmarks.any? %>
+   <h3>お気に入り温泉<%= @user.bookmarks.count %>件 </h3>
+   <div class="onsen-list">
+     <%= render 'shared/bookmark_list' %>
+   </div>
+  <% end %>
+  <div class="prof-fav-btn-wp"><%= link_to  "プロフィールに戻る", @user,  class: "prof-fav-btn" %>
+  </div>
+</div>

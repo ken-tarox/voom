@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-  has_many :microposts, dependent: :destroy
+  has_many :onsenposts, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_onsenposts, through: :bookmarks, source: :onsenposts
+  has_many :comments
   attr_accessor :remember_token, :activation_token, :reset_token
+  mount_uploader :picture, PictureUploader
   before_save   :downcase_email
   before_create :create_activation_digest
   validates :name,  presence: true, length: { maximum: 50 }
@@ -60,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where("user_id = ?", id)
+    Onsenpost.where("user_id = ?", id)
   end
 
   private

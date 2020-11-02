@@ -1,12 +1,14 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
-
-<%= will_paginate %>
-
-<ul class="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-  <% end %>
-</ul>
-
-<%= will_paginate %>
+<% provide(:title, 'ユーザー管理') %>
+<div class="fluid-user-mng-bg">
+<div class="container user-mng-bg">
+ <div class="col-md-10 col-md-offset-1 offset user-mng">
+   <h1>ユーザー管理</h1>
+   <ul class="users">
+     <% @users.each do |user| %>
+       <%= render user %>
+     <% end %>
+   </ul>
+   <%= will_paginate(@users)  %>
+</div>
+</div>
+</div>

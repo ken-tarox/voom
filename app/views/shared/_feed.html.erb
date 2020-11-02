@@ -1,6 +1,22 @@
-<% if @feed_items.any? %>
-  <ol class="microposts">
-    <%= render @feed_items %>
-  </ol>
-  <%= will_paginate @feed_items %>
+
+<% @onsenposts.each do |onsenpost| %>
+<%= link_to onsenpost do %>
+<div class="card-side-list">
+  <div class="card-img-bg">
+    <% if onsenpost.picture.present? %>
+    <%= image_tag onsenpost.picture.thumb100.url, class:"card-side-img" %>
+    <% else %>
+    <%= image_tag "onsen-logo100.jpg", class:"card-side-img" %>
+    <% end %>
+  </div>
+  <div class="card-content-side">
+    <span class="onsen_name"><%= onsenpost.onsen_name %></span>
+    <span class="prefecture"><%= onsenpost.prefecture %></span>
+  <div class="card-content-bt">
+    <span class="comment"><%= embedded_svg("bubbles3.svg", class: "bubble-svg") %><%= onsenpost.comments.count %> 件のクチコミ</span>
+    <span class="avg-rating"><%= embedded_svg("star-full.svg", class: "star-svg") %><%= onsenpost.rating_average %> </span>
+  </div>
+  </div>
+</div>
+<% end %>
 <% end %>

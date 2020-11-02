@@ -1,25 +1,27 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<% provide(:title, "ログイン") %>
+<div class="i-s-row">
+  <div class="i-s-box col-md-8 col-md-offset-2">
+    <h1>ログイン</h1>
     <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email %>
+      <div class="form-list">
+      <%= f.label :メールアドレス %>
       <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= link_to "(forgot password)", new_password_reset_path %>
+      </div>
+      <div class="form-list">
+      <%= f.label :パスワード %>
+      <%= link_to "(パスワードをお忘れですか？)", new_password_reset_path %>
       <%= f.password_field :password, class: 'form-control' %>
-
+      </div>
       <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
+      <%= f.check_box :remember_me %>
+        <span>このコンピュータにログイン情報を保存</span>
       <% end %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+      <div class="form-list">
+      <%= f.submit "ログイン", class: "submit" %>
+      </div>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <div class="form-list">
+    <p class="form-list-tex">このサイトの訪問は初めてですか？</p><%= link_to "ユーザー登録", signup_path, class: "btn-submit-bl-sub" %>
+    </div>
   </div>
 </div>

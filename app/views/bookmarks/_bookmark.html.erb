@@ -1,0 +1,13 @@
+<%= link_to bookmark do %>
+<li id="onsenpost-<%= onsenpost.id %>" >
+  <% if onsenpost.picture.present? %>
+  <%= image_tag onsenpost.picture.thumb100.url %>
+  <% else %>
+  <%= image_tag "no-image.jpeg" %>
+  <% end %>
+  <h4 class="mb-3">レビュー総合：<%= @average_rate %> </h4>
+  <span class="onsen_name"><%= onsenpost.onsen_name %></span>
+  <span class="prefecture"><%= onsenpost.prefecture %></span>
+  <span class="comment"><%= onsenpost.comments.count %> 件のクチコミ</span>
+</li>
+<% end %>

@@ -1,0 +1,22 @@
+
+<% @bookmark_list.first(6).each do |onsenpost| %>
+  <div class="col-sm-6 col-xs-6 col-md-4">
+    <%= link_to onsenpost do %>
+    <div class="card h-100">
+      <% if onsenpost.picture.present? %>
+      <%= image_tag onsenpost.picture.thumb400.url, class:"card-img" %>
+      <% else %>
+      <%= image_tag "onsen-logo400.jpg" %>
+      <% end %>
+      <div class="card-content">
+        <span class="onsen_name"><%= onsenpost.onsen_name %></span>
+        <span class="prefecture"><%= onsenpost.prefecture %></span>
+        <div class="card-content-bt">
+          <span class="comment"><%= embedded_svg("bubbles3.svg", class: "bubble-svg") %><%= onsenpost.comments.count %> 件のクチコミ</span>
+          <span class="avg-rating"><%= embedded_svg("star-full.svg", class: "star-svg") %><%= onsenpost.rating_average %> </span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>

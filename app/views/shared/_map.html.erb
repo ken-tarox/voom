@@ -1,0 +1,58 @@
+
+
+<input type="button" value="マップで入力した住所を確認" onclick="codeAddress()" class="map-button">
+
+
+<div class="gmap">
+  <div id='map'>
+  </div>
+</div>
+
+
+<script>
+
+  let map
+  let geocoder
+
+  function initMap() {
+    // geocoderを初期化
+    // 引用者注:google.maps.Geocoderインスタンスを生成
+    geocoder = new google.maps.Geocoder()
+
+    // 引用者注:google.maps.Mapインスタンスを生成することで、地図のデフォルト位置(緯度経度、ズーム)を設定
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: 35.658584,
+        lng: 139.7454316
+      },
+      zoom: 16
+    });
+  }
+
+  function codeAddress() {
+    // 入力を取得
+    let inputAddress = document.getElementById('address').value;
+
+    // geocodingしたあとmapを移動
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) { //ジオコードしたい住所を引数として渡す
+    if (status == 'OK') {
+      let lat = results[0].geometry.location.lat(); //ジオコードした結果の緯度
+      let lng = results[0].geometry.location.lng(); //ジオコードした結果の経度
+      let mark = {
+          lat: lat, //緯度
+          lng: lng  //経度
+      };
+      map.setCenter(results[0].geometry.location); //最も近い、判読可能な住所を取得したい場所の緯度・経度
+      let marker = new google.maps.Marker({
+          map: map, //マーカーを落とすマップを指定
+          position: results[0].geometry.location //マーカーを落とす位置を決める
+      });
+      } else {
+        alert('正しい住所を入力し、再度ご確認ください');
+      }
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
+</script>

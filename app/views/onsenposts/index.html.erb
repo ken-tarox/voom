@@ -1,0 +1,42 @@
+<% provide(:title, '温泉一覧') %>
+<div class="row i-s-row">
+  <div class="i-s-box col-md-10 col-md-offset-1">
+    <h1>温泉検索</h1>
+    <%= form_with(scope: :search, url: onsenposts_path, method: :get, local: true) do |f| %>
+      <div class="col-md-12">
+        <%= f.label(:onse_name, Onsenpost.human_attribute_name(:温泉名)) %>
+        <%= f.text_field :onsen_name, value: @search_params[:onsen_name], class: 'onsen-name-input' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label(:prefecture, Onsenpost.human_attribute_name(:都道府県)) %>
+        <%= f.select :prefecture, Onsenpost.prefectures.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label(:kind, Onsenpost.human_attribute_name(:泉質)) %>
+        <%= f.select :kind, Onsenpost.kinds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label(:kind_b, Onsenpost.human_attribute_name(:お風呂のタイプ)) %>
+        <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label(:kind_c, Onsenpost.human_attribute_name(:雰囲気)) %>
+        <%= f.select :kind_c, Onsenpost.kind_cs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label(:kind_d, Onsenpost.human_attribute_name(:その他)) %>
+        <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      </div>
+      <div class="col-md-12">
+        <%= f.submit " 検索する", class: 'submit' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="onsen-list">
+  <% @onsenposts.each do |onsenpost| %>
+    <%= render onsenpost %>
+  <% end %>
+</div>
+<%= will_paginate @onsenposts, inner_window: 0, outer_window: 0 %>

@@ -1,0 +1,78 @@
+<% provide(:title, @onsenpost.onsen_name) %>
+  <div class="div col-md-7" >
+    <div class="user_info">
+      <div class="onsen_main_img">
+      <% if @onsenpost.picture.present? %>
+      <%= image_tag @onsenpost.picture.thumb600.url %>
+      <% else %>
+      <%= image_tag "onsen-logo600.jpg" %>
+      <% end %>
+      </div>
+
+      <div class="onsen-name-main">
+        <h1 class="onsen_name"><%= @onsenpost.onsen_name %></h1>
+        <span class="avg-rating"><%= embedded_svg("star-full.svg", class: "star-svg") %><%= @onsenpost.rating_average %> </span>
+      </div>
+      <div class="onsen-kind-main">
+        <h3>特徴</h3>
+        <% if @onsenpost.kind.present? %>
+        <span class="kind"><%= @onsenpost.kind %></span>
+        <% end %>
+        <% if @onsenpost.kind_b.present? %>
+        <span class="kind_b"><%= @onsenpost.kind_b %></span>
+        <% end %>
+        <% if @onsenpost.kind_c.present? %>
+        <span class="kind_c"><%= @onsenpost.kind_c %></span>
+        <% end %>
+        <% if @onsenpost.kind_d.present? %>
+        <span class="kind_d"><%= @onsenpost.kind_d %></span>
+        <% end %>
+      </div>
+      <div class="onsen-map-main">
+        <h3>エリア</h3>
+      <div class="gmap">
+        <div id='map'></div>
+        <span class="prefecture"><%= @onsenpost.prefecture %></span>
+        <span class="address" ><%= @onsenpost.address %></span>
+      </div>
+      </div>
+
+      <script>
+        let map
+        let geocoder
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+              lat: <%= @onsenpost.latitude%>,
+              lng: <%= @onsenpost.longitude%>
+            },
+            zoom: 16
+          });
+          marker = new google.maps.Marker({
+            position:  {
+              lat: <%= @onsenpost.latitude%>,
+              lng: <%= @onsenpost.longitude%>
+            },
+            map: map
+          });
+        }
+            </script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-EdF4a_KD2yPGiYrXiPybpguk248xyco&callback=initMap" async defer>
+      </script>
+
+      <%= render 'shared/comment_form' %>
+      <%= render 'shared/bookmark_form' %>
+
+      <% if current_user?(@onsenpost.user) %>
+      <span><%= link_to "このMy温泉を削除", @onsenpost, method: :delete, data: { confirm: "このMy温泉を削除してもよろしいですか？" }, class: "btn-submit-bl-sub" %><% end %></span>
+    </div>
+  </div>
+  <aside class="col-md-5">
+    <div class="side-one">
+        <h3>新着の温泉</h3>
+        <%= render 'shared/feed' %>
+    </div>
+  </aside>

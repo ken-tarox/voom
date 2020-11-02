@@ -1,0 +1,84 @@
+<div class="i-s-row">
+  <div class="i-s-box">
+<%= form_for(@onsenpost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <h1>My温泉登録 </h1>
+    <div class="form-list">
+      <%= f.label :温泉名 %>
+      <%= f.text_field :onsen_name %>
+    </div>
+    <div class="form-list">
+      <%= f.label :都道府県 %>
+      <%= f.select :prefecture, Onsenpost.prefectures.keys,include_blank: "選択して下さい", class: '' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :住所 %>
+      <%= f.text_field :address, {id: "address"} %>
+      <%= render 'shared/map' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :泉質 %>
+      <%= f.select :kind, Onsenpost.kinds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :お風呂のタイプ %>
+      <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :雰囲気 %>
+      <%= f.select :kind_c, Onsenpost.kind_cs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :その他 %>
+      <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+    </div>
+    <div class="form-list">
+      <%= f.label :温泉写真を添付 %>
+      <span class="picture">
+    </div>
+    <div class="form-list-img">
+      <% if @onsenpost.picture.present? %>
+      <%= image_tag @onsenpost.picture, id: :img_prev %>
+      <% else %>
+      <%= image_tag "onsen-logo400.jpg", id: :img_prev %>
+      <% end %>
+    </div>
+    <div class="form-list-img-btn">
+      <%= f.file_field :picture,  id: :user_img, accept: 'image/jpeg,image/gif,image/png' %>
+
+    <%= f.submit "登録する", class: "submit" %>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <script type="text/javascript">
+      $('#onsenpost_picture').bind('change', function() {
+        var size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+          alert('Maximum file size is 5MB. Please choose a smaller file.');
+        }
+      });
+    </script>
+
+    <script>
+      $(function() {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#user_img").change(function(){
+            readURL(this);
+        });
+      });
+    </script>
