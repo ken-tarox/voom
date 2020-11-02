@@ -11,7 +11,7 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
-      flash[:info] = "パスワードリセットの説明と一緒にメールが送られました"
+      flash[:info] = "パスワード更新の説明と一緒にメールが送られました"
       redirect_to root_url
     else
       flash.now[:danger] = "メールアドレスを入力して下さい"
@@ -28,7 +28,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update(user_params)
       log_in @user
-      flash[:success] = "Password has been reset."
+      flash[:success] = "パスワードは更新されました"
       redirect_to @user
     else
       render 'edit'
@@ -54,7 +54,7 @@ class PasswordResetsController < ApplicationController
 
     def check_expiration
       if @user.password_reset_expired?
-        flash[:danger] = "Password reset has expired."
+        flash[:danger] = "パスワード更新は無効となりました"
         redirect_to new_password_reset_url
       end
     end
