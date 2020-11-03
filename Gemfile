@@ -18,6 +18,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'jquery-turbolinks'
 gem "dotenv-rails"
+gem 'font-awesome-sass'
 # Use sqlite3 as the database for Active Record
 gem 'rails-controller-testing'
 # Use Puma as the app server

@@ -6,50 +6,55 @@
     <h1>My温泉登録 </h1>
     <div class="form-list">
       <%= f.label :温泉名 %>
-      <%= f.text_field :onsen_name %>
+      <%= f.text_field :onsen_name, { placeholder: "温泉名を入力してください"} %>
     </div>
     <div class="form-list">
       <%= f.label :都道府県 %>
-      <%= f.select :prefecture, Onsenpost.prefectures.keys,include_blank: "選択して下さい", class: '' %>
+      <%= f.select :prefecture, Onsenpost.prefectures.keys,include_blank: "都道府県を選択して下さい", class: '' %>
     </div>
     <div class="form-list">
       <%= f.label :住所 %>
-      <%= f.text_field :address, {id: "address"} %>
+      <%= f.text_field :address, {id: "address", placeholder: "住所を入力してください"} %>
       <%= render 'shared/map' %>
     </div>
     <div class="form-list">
       <%= f.label :泉質 %>
-      <%= f.select :kind, Onsenpost.kinds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      <%= f.select :kind, Onsenpost.kinds.keys,include_blank: "泉質を選択して下さい", class: 'select-kind' %>
     </div>
     <div class="form-list">
-      <%= f.label :お風呂のタイプ %>
-      <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      <%= f.label :タイプ %>
+      <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "タイプを選択して下さい", class: 'select-kind' %>
     </div>
     <div class="form-list">
       <%= f.label :雰囲気 %>
-      <%= f.select :kind_c, Onsenpost.kind_cs.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      <%= f.select :kind_c, Onsenpost.kind_cs.keys,include_blank: "雰囲気を選択して下さい", class: 'select-kind' %>
     </div>
     <div class="form-list">
       <%= f.label :その他 %>
-      <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "選択して下さい", class: 'select-kind' %>
+      <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "その他の特徴を選択して下さい", class: 'select-kind' %>
     </div>
     <div class="form-list">
       <%= f.label :温泉写真を添付 %>
-      <span class="picture">
-    </div>
+    <span class="picture"></span>
     <div class="form-list-img">
       <% if @onsenpost.picture.present? %>
-      <%= image_tag @onsenpost.picture, id: :img_prev %>
+      <%= image_tag @onsenpost.picture.thumb600.url, id: :img_prev %>
       <% else %>
       <%= image_tag "onsen-logo400.jpg", id: :img_prev %>
       <% end %>
     </div>
+    </div>
+    <div class="form-list">
     <div class="form-list-img-btn">
-      <%= f.file_field :picture,  id: :user_img, accept: 'image/jpeg,image/gif,image/png' %>
-
+      <%= f.label:image,  class: "form-image" do %>
+      <i class="fas fa-camera"></i>画像を選択してください</i>
+      <%= f.file_field :picture, id: :user_img,   accept: 'image/jpeg,image/gif,image/png' %>
+      <% end %>
+    </div>
     <%= f.submit "登録する", class: "submit" %>
     <% end %>
     </div>
+
     </div>
   </div>
 </div>

@@ -1,11 +1,11 @@
 <% provide(:title, '温泉一覧') %>
 <div class="row i-s-row">
-  <div class="i-s-box col-md-10  offset-2 ">
+  <div class="i-s-box col-md-10 col-md-offset-1">
     <h1 class=" index-list-tit">温泉検索</h1>
     <%= form_with(scope: :search, url: onsenposts_path, method: :get, local: true) do |f| %>
       <div class="col-md-12">
         <%= f.label(:onse_name, Onsenpost.human_attribute_name(:温泉名)) %>
-        <%= f.text_field :onsen_name, value: @search_params[:onsen_name], class: 'onsen-name-input' %>
+        <%= f.text_field :onsen_name, value: @search_params[:onsen_name], class: 'onsen-name-input', placeholder: "温泉名を入力してください" %>
       </div>
       <div class="col-md-4  index-list">
         <%= f.label(:prefecture, Onsenpost.human_attribute_name(:都道府県)) %>
@@ -27,7 +27,7 @@
         <%= f.label(:kind_d, Onsenpost.human_attribute_name(:その他)) %>
         <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "その他の特徴を選択して下さい", class: 'select-kind' %>
       </div>
-      <div class="col-md-4  index-list">
+      <div class="col-md-8 col-md-offset-2 index-list">
         <%= f.submit " 検索する", class: 'submit' %>
       </div>
     </div>
