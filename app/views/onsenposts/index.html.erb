@@ -16,8 +16,8 @@
         <%= f.select :kind, Onsenpost.kinds.keys,include_blank: "泉質を選択して下さい", class: 'select-kind' %>
       </div>
       <div class="col-md-4  index-list">
-        <%= f.label(:kind_b, Onsenpost.human_attribute_name(:お風呂のタイプ)) %>
-        <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "お風呂タイプを選択して下さい", class: 'select-kind' %>
+        <%= f.label(:kind_b, Onsenpost.human_attribute_name(:タイプ)) %>
+        <%= f.select :kind_b, Onsenpost.kind_bs.keys,include_blank: "タイプを選択して下さい", class: 'select-kind' %>
       </div>
       <div class="col-md-4  index-list">
         <%= f.label(:kind_c, Onsenpost.human_attribute_name(:雰囲気)) %>
@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-4  index-list">
         <%= f.label(:kind_d, Onsenpost.human_attribute_name(:その他)) %>
-        <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "その他の選択して下さい", class: 'select-kind' %>
+        <%= f.select :kind_d, Onsenpost.kind_ds.keys,include_blank: "その他の特徴を選択して下さい", class: 'select-kind' %>
       </div>
       <div class="col-md-4  index-list">
         <%= f.submit " 検索する", class: 'submit' %>

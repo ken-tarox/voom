@@ -38,6 +38,7 @@ input[type="text"],
 input[type="password"],
 input[type="button"],
 input[type="submit"],
+input[type="email"],
 textarea,
 select {
     outline: 0 !important;
@@ -49,6 +50,8 @@ select {
 input[type="text"],
 input[type="password"],
 input[type="button"],
+input[type="submit"],
+input[type="email"],
 textarea,
 select:focus {
 outline: 0 !important;
@@ -57,6 +60,8 @@ outline: 0 !important;
 input[type="text"],
 input[type="password"],
 input[type="button"],
+input[type="submit"],
+input[type="email"],
 textarea,
 select:focus::after {
   outline: 0 !important;
@@ -140,6 +145,10 @@ ul{
 }
 
 // navigation
+
+.navbar-collapse{
+  border-top:0px solid #FD365B;
+}
 
 .navbar{
   background-color:#FD365B;
@@ -237,8 +246,9 @@ width:100%;
 padding:0px;
 a{
   font-size: .95em!important;
+  margin-left: 5px!important;
+  margin-bottom: 10px;
 }
-
 }
 }
 
@@ -255,8 +265,10 @@ width:100%;
 padding:0px;
 display: flex;
 font-size: 1.0em;
+a{
+  padding:5px 10px!important;
 }
-
+}
 }
 
 /* footer */
@@ -355,8 +367,10 @@ li a {
 }
 
 
-#img_prev {
+img#img_prev {
   width:100%;
+  max-width: 100%;
+  height: auto;
 }
 
 #img_no_image {
@@ -1097,6 +1111,8 @@ input {
     height:50px!important;
     border-radius: 10px;
     border: none;
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.1);
     box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.1);
     padding:0 10px;
     margin-bottom: 0;
@@ -1198,24 +1214,39 @@ appearance: none;
   padding-bottom: 10px;
 }
 
-.checkbox {
-  margin-top: 25px;
-  margin-bottom: 0px;
-  position: relative;
-  span {
-    margin-left: 50px;
-    font-weight: normal;
-  }
+.check-box-bg{
+  height: 40px;
+    line-height: 40px;
+    margin-left: 30px;
+
 }
 
-#session_remember_me{
-  position:absolute;
+input[type="checkbox"] {
+opacity:0;
+-webkit-appearance: none;
+appearance: none;
+position: absolute;
+}
+input[type="checkbox"] + span::before {
+display: inline-block;
+content: '';
+width: 2rem;
+height: 2rem;
+border: 2px solid #ccc;
+border-radius: 3px;
+margin-right: 1rem;
+vertical-align: middle;
+}
 
-  width: 20px;
-  top:-20px;
-  border: 2px solid;
-  border-radius: 10px;
-  margin-left: 20px;
+input[type="checkbox"]:checked + span::before {
+background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpolyline fill='none' stroke='%230bd' stroke-width='3' points='2,7.3 7.3,12.7 18,2 '/%3E%3C/svg%3E");
+
+
+background-repeat: no-repeat;
+background-position: 0 2px;
+}
+input[type="checkbox"]:focus + span::before {
+border-color: #0bd;
 }
 
 
