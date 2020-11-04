@@ -1,7 +1,7 @@
 <% provide(:title, 'パスワードリセット') %>
 <div class="i-s-row">
   <div class="i-s-box col-md-8 col-md-offset-2">
-    <h1>パスワードリセット</h1>
+    <h1>パスワード更新</h1>
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= hidden_field_tag :email, @user.email %>
@@ -14,7 +14,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
     <div class="form-list">
-      <%= f.submit "パスワードの更新", class: "btn btn-primary" %>
+      <%= f.submit "パスワードの更新", class: "submit" %>
     </div>
     <% end %>
   </div>
