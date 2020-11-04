@@ -79,6 +79,7 @@ select:focus::after {
    color: #FFFFFF;
    font-weight: bold;
    text-align: center;
+   border-radius:0!important;
 }
 
 #error_explanation{
