@@ -1,10 +1,10 @@
-<h1>ONSENO</h1>
+<h3>温泉クチコミアプリ・ONSENO</h3>
 
 <p>こんにちは <%= @user.name %>さん</p>
 
 <p>
-下記のリンクをクリックしてアカウントを有効にしてください。
+下記の「アカウントの有効化」リンクをクリックしてアカウントを有効にしてください。
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+<%= link_to "アカウントの有効化", edit_account_activation_url(@user.activation_token,
                                                     email: @user.email) %>
