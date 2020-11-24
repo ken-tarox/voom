@@ -293,7 +293,7 @@ DEPENDENCIES
   jquery-turbolinks
   listen (~> 3.2)
   mini_magick (= 4.7.0)
-  mysql2 (= 0.4.4)
+  mysql2
   pry-rails
   puma (~> 4.1)
   rails (= 6.0.3.3)
