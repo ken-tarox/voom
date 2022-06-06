@@ -69,8 +69,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2', '0.4.4'
-  gem 'fog-aws'
+   gem 'mysql2'
 end
 
 
