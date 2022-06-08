@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2020_10_02_050227) do
 
-  create_table "average_rates", force: :cascade do |t|
-    t.integer "onsenpost_id"
+  create_table "average_rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "onsenpost_id"
     t.float "average_rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -21,19 +21,19 @@ ActiveRecord::Schema.define(version: 2020_10_02_050227) do
     t.index ["onsenpost_id"], name: "index_average_rates_on_onsenpost_id"
   end
 
-  create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "onsenpost_id"
+  create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "onsenpost_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["onsenpost_id"], name: "index_bookmarks_on_onsenpost_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.text "comment_content"
-    t.integer "user_id"
-    t.integer "onsenpost_id"
+    t.bigint "user_id"
+    t.bigint "onsenpost_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "rate"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2020_10_02_050227) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "microposts", force: :cascade do |t|
+  create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
@@ -52,14 +52,14 @@ ActiveRecord::Schema.define(version: 2020_10_02_050227) do
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
-  create_table "onsenposts", force: :cascade do |t|
+  create_table "onsenposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "onsen_name"
     t.string "address"
     t.string "title"
     t.text "content"
     t.float "rate"
     t.integer "kind"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2020_10_02_050227) do
     t.index ["user_id"], name: "index_onsenposts_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false

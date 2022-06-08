@@ -22,7 +22,7 @@ gem 'font-awesome-sass'
 # Use sqlite3 as the database for Active Record
 gem 'rails-controller-testing'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -64,13 +64,14 @@ group :test do
   gem 'webdrivers'
 end
 
-group :development, :test do
-  gem 'sqlite3'
+group :development, :test, :production do
+  # gem 'sqlite3'
+  gem 'mysql2'
 end
 
-group :production do
-   gem 'mysql2'
-end
+# group :production do
+#    gem 'mysql2'
+# end
 
 
 
