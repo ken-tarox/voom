@@ -30,11 +30,11 @@
       </div>
       <div class="onsen-map-main">
         <h3>エリア</h3>
-      <div class="gmap">
-        <div id='map'></div>
-        <span class="prefecture"><%= @onsenpost.prefecture %></span>
-        <span class="address" ><%= @onsenpost.address %></span>
-      </div>
+        <div class="gmap">
+          <div id='map'></div>
+          <span class="prefecture"><%= @onsenpost.prefecture %></span>
+          <span class="address" ><%= @onsenpost.address %></span>
+        </div>
       </div>
 
       <script>
@@ -58,10 +58,10 @@
             map: map
           });
         }
-            </script>
+      </script>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer>
-      </script>
+ </script>
 
       <%= render 'shared/comment_form' %>
       <%= render 'shared/bookmark_form' %>
