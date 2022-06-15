@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_050227) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
     t.integer "prefecture"
-    t.json "images"
     t.float "latitude"
     t.float "longitude"
     t.float "average_rate"
