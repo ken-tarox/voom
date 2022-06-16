@@ -23,6 +23,7 @@ ONSENO・オンセノは温泉クチコミアプリです。全国各地に点�
 - MySQL2 8.0.29
 - GitHub
 - Heroku
+- AWS S3
 
 ## 使い方
 

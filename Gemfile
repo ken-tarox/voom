@@ -65,7 +65,6 @@ group :test do
 end
 
 group :development, :test, :production  do
-  # gem 'sqlite3'
   gem 'mysql2'
   gem 'fog-aws'
   gem 'mime-types'
