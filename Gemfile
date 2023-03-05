@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '6.0.3.3'
@@ -18,7 +18,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'jquery-turbolinks'
 gem "dotenv-rails"
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '< 5.0.13'
 # Use sqlite3 as the database for Active Record
 gem 'rails-controller-testing'
 # Use Puma as the app server
