@@ -23,8 +23,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: Goe2-idI6dH-y8HelK-D6E
+  username: <%= Rails.application.credentials.db[:pro_username] %>
+  password: <%= Rails.application.credentials.db[:pro_password] %>
   host: localhost
 
 development:
@@ -33,10 +33,10 @@ development:
 
 test:
   <<: *default
-  database: onsen_test # samはアプリ名です。
+  database: onsen_test
 
 production:
   <<: *default
   database: onsen_production
-  username: <%= Rails.application.credentials.db[:pro_username] %>
-  password: <%= Rails.application.credentials.db[:pro_password] %>
+  # username: <%= Rails.application.credentials.db[:pro_username] %>
+  # password: <%= Rails.application.credentials.db[:pro_password] %>
