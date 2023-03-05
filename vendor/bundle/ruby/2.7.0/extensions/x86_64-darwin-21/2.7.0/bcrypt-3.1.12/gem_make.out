@@ -1,0 +1,23 @@
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.12/ext/mri
+/Users/ken/.rbenv/versions/2.7.6/bin/ruby -I /Users/ken/.rbenv/versions/2.7.6/lib/ruby/site_ruby/2.7.0 extconf.rb
+creating Makefile
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.12/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20230305-43427-1vktt sitelibdir\=./.gem.20230305-43427-1vktt clean
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.12/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20230305-43427-1vktt sitelibdir\=./.gem.20230305-43427-1vktt
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.12/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20230305-43427-1vktt sitelibdir\=./.gem.20230305-43427-1vktt install
+/usr/bin/install -c -m 0755 bcrypt_ext.bundle ./.gem.20230305-43427-1vktt
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.12/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20230305-43427-1vktt sitelibdir\=./.gem.20230305-43427-1vktt clean

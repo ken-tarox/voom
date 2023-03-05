@@ -1,0 +1,18 @@
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.6.0/gems/racc-1.6.2/ext/racc/cparse
+/Users/ken/.rbenv/versions/2.6.5/bin/ruby -I /Users/ken/.rbenv/versions/2.6.5/lib/ruby/site_ruby/2.6.0 -r ./siteconf20230305-38164-19pn91p.rb extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.6.0/gems/racc-1.6.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.6.0/gems/racc-1.6.2/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: -undefined dynamic_lookup may not work with chained fixups
+
+current directory: /Users/ken/voom/vendor/bundle/ruby/2.6.0/gems/racc-1.6.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20230305-38164-jl9qht/racc
